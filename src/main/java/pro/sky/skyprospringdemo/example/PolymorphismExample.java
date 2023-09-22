@@ -10,7 +10,7 @@ public class PolymorphismExample {
                 "Ivan",
                 "Petrov",
                 "12345678",
-                "244");
+                "244", 1);
         driver.setDriverLicenseNumber("277");
         System.out.println("driver.getDriverLicenseNumber() = " + driver.getDriverLicenseNumber());
     }

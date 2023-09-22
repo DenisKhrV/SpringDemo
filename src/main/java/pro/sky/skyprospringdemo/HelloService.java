@@ -1,4 +1,4 @@
-package pro.sky.skyprospringdemo.service;
+package pro.sky.skyprospringdemo;
 
 public interface HelloService {
     String hello();
