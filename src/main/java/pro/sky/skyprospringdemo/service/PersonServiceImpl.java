@@ -41,11 +41,10 @@ public class PersonServiceImpl implements PersonService {
     };
 
     @Override
-    public String getPerson(Integer number) {
+    public String getPerson(Integer number) throws BadPersonNumberException {
         final Person person;
         if (number >= persons.length) {
-            return null;
-//            throw new BadPersonNumberException("ошибка в том, что номер человека заведомо больше размера массива");
+            throw new BadPersonNumberException("ошибка в том, что номер человека заведомо больше размера массива");
         }
         person = persons[number];
 
