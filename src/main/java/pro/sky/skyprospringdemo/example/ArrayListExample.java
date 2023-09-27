@@ -20,6 +20,9 @@ public class ArrayListExample {
 
         System.out.println(numbersArray.length);
         System.out.println(numbersList.size());
-    }
 
+        numbersList.add(56);
+        System.out.println(numbersList);
+
+    }
 }

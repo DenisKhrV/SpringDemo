@@ -6,11 +6,12 @@ import pro.sky.skyprospringdemo.domain.Person;
 import pro.sky.skyprospringdemo.domain.TruckDriver;
 import pro.sky.skyprospringdemo.exceptions.BadPersonNumberException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    List<Person> persons = List.of(
+    List<Person> persons = new ArrayList<>(List.of(
             new Person(
                     "Жан",
                     "Рено",
@@ -38,7 +39,7 @@ public class PersonServiceImpl implements PersonService {
                     "1000",
                     "2345",
                     4)
-    );
+    ));
     List<String> professions = List.of(
             "безработный",
             "водитель",
@@ -60,5 +61,10 @@ public class PersonServiceImpl implements PersonService {
                 + person.getPassport() + " "
                 + professions.get(person.getProfessionNumber());
         return personDescription;
+    }
+
+    @Override
+    public void addPerson(Person person) {
+        persons.add(person);
     }
 }
