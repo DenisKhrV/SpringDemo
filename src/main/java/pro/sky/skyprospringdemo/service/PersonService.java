@@ -7,4 +7,6 @@ public interface PersonService {
     public String getPerson(Integer number) throws BadPersonNumberException;
 
     void addPerson(Person person);
+
+    String getPersonByPassport(String passport);
 }
