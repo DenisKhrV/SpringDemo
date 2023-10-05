@@ -14,28 +14,25 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping(path = "/person")
-    public String getPersonInfo(@RequestParam("number") Integer number) {
-        final String person;
-        person = personService.getPerson(number);
-        return person;
-    }
     @GetMapping(path = "/person/by-passport")
     public String getPersonInfo(@RequestParam("passport") String passport) {
         return personService.getPersonByPassport(passport);
     }
+
     @GetMapping(path = "/person/add")
     public String addPerson(@RequestParam("name") String name,
                             @RequestParam("surname") String surname,
                             @RequestParam("passport") String passport,
                             @RequestParam("profession") Integer profession) {
-        Person person = new Person(
-                name,
-                surname,
-                passport,
-                profession
-        );
+        Person person = new Person(name, surname, passport, profession);
         personService.addPerson(person);
         return "Person added";
+    }
+
+    @GetMapping(path = "/person/profession/add")
+    public String addProfession(@RequestParam("passport") String passport,
+                                @RequestParam("profession") Integer profession) {
+        personService.addProfession(passport, profession);
+        return "Профессия успешно добавлена";
     }
 }
