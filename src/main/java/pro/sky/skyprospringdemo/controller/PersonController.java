@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Person;
 import pro.sky.skyprospringdemo.service.PersonService;
 
+import java.util.List;
+
 @RestController
 public class PersonController {
     private final PersonService personService;
@@ -34,5 +36,9 @@ public class PersonController {
                                 @RequestParam("profession") Integer profession) {
         personService.addProfession(passport, profession);
         return "Профессия успешно добавлена";
+    }
+
+    public void getByProfessions() {
+        personService.getPersonsByProfessions(List.of(1, 3));
     }
 }

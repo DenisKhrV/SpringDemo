@@ -12,6 +12,14 @@ public class ArrayListExample {
         Map<String, Integer> numbersMap2 = Map.of("four", 4, "five", 5);
         Set<Integer> numbersSet = new HashSet<>(List.of(1, 2, 40, 12));
 
+        List<Integer> test = new ArrayList<>(3);
+        test.add(2);
+        test.add(2);
+        test.add(2);
+        test.add(2);
+        test.add(2);
+        System.out.println(test);
+
 //        Получение значения по ключу
         final Integer num = numbersArray[0]; numbersList.get(0); numbersMap.get("two"); /*--------*/
 
