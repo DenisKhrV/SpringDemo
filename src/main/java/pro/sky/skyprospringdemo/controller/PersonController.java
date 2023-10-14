@@ -6,7 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.skyprospringdemo.domain.Person;
 import pro.sky.skyprospringdemo.service.PersonService;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class PersonController {
@@ -38,7 +41,36 @@ public class PersonController {
         return "Профессия успешно добавлена";
     }
 
-    public void getByProfessions() {
-        personService.getPersonsByProfessions(List.of(1, 3));
+    @GetMapping(path = "/persons/by-profession")
+    public String getByProfession(@RequestParam("profession") int profession) {
+        final List<Person> personsByProfession = personService.getPersonsByProfession(profession);
+//        String forPassport = null;
+//        for (final Person person : personsByProfession) {
+//            final String passport = person.getPassport();
+//            if (passport.startsWith("4")) {
+//                forPassport ="~" + person.getPassport() + "~";
+//            }
+//        }
+//        if (forPassport == null) {
+//            throw new RuntimeException("Person not found");
+//        }
+
+
+//        personsByProfession.forEach(person -> {
+//            passports.add(person.getPassport());
+//        });
+
+
+//        List<String> streamPassports = personsByProfession.stream().map((Person person) -> {
+//            return person.getPassport();
+//        }).collect(Collectors.toList());
+        final Optional<String> passport = personsByProfession.stream()
+                .map(person -> person.getPassport())
+                .filter(p -> p.startsWith("4"))
+                .map((p -> "~" + p + "~"))
+                .findAny()
+                ;
+
+        return passport.orElseThrow(() -> new RuntimeException("Person not found"));
     }
 }
